@@ -551,6 +551,8 @@ public class PdfUtils {
             byte[] imageBytes,
             float x,
             float y,
+            float width,
+            float height,
             boolean everyPage)
             throws IOException {
 
@@ -566,7 +568,12 @@ public class PdfUtils {
                 // Create an image object from the image bytes
                 PDImageXObject image = PDImageXObject.createFromByteArray(document, imageBytes, "");
                 // Draw the image onto the page at the specified x and y coordinates
-                contentStream.drawImage(image, x, y);
+                if (width == 0 && height == 0) {
+                    contentStream.drawImage(image, x, y);
+                } else {
+                    contentStream.drawImage(image, x, y, width, height);
+                }
+
                 log.info("Image successfully overlayed onto PDF");
                 if (!everyPage && i == 0) {
                     break;

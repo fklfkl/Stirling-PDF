@@ -115,7 +115,7 @@ public class PdfUtilsTest {
 
         byte[] result =
                 PdfUtils.overlayImage(
-                        factory, pdfOut.toByteArray(), imgOut.toByteArray(), 0, 0, false);
+                        factory, pdfOut.toByteArray(), imgOut.toByteArray(), 0, 0, 0, 0, false);
         try (PDDocument resultDoc = factory.load(result)) {
             assertEquals(1, resultDoc.getNumberOfPages());
         }

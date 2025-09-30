@@ -44,13 +44,22 @@ public class OverlayImageController {
         MultipartFile imageFile = request.getImageFile();
         float x = request.getX();
         float y = request.getY();
+        float width = request.getWidth();
+        float height = request.getHeight();
         boolean everyPage = Boolean.TRUE.equals(request.getEveryPage());
         try {
             byte[] pdfBytes = pdfFile.getBytes();
             byte[] imageBytes = imageFile.getBytes();
             byte[] result =
                     PdfUtils.overlayImage(
-                            pdfDocumentFactory, pdfBytes, imageBytes, x, y, everyPage);
+                            pdfDocumentFactory,
+                            pdfBytes,
+                            imageBytes,
+                            x,
+                            y,
+                            width,
+                            height,
+                            everyPage);
 
             return WebResponseUtils.bytesToWebResponse(
                     result,

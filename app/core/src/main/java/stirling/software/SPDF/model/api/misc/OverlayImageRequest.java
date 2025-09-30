@@ -32,6 +32,18 @@ public class OverlayImageRequest extends PDFFile {
     private float y;
 
     @Schema(
+            description = "Width of overlaid image",
+            requiredMode = Schema.RequiredMode.NOT_REQUIRED,
+            defaultValue = "0")
+    private float width;
+
+    @Schema(
+            description = "Height of overlaid image",
+            requiredMode = Schema.RequiredMode.NOT_REQUIRED,
+            defaultValue = "0")
+    private float height;
+
+    @Schema(
             description = "Whether to overlay the image onto every page of the PDF.",
             requiredMode = Schema.RequiredMode.REQUIRED,
             defaultValue = "false")
